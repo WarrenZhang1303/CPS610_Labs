@@ -21,3 +21,5 @@ INSERT INTO EMPLOYEE (
     45000.00, 
     'Female'
 );
+ALTER TABLE EMPLOYEE@db2 MODIFY (emp_salary  DECIMAL(10,2) NOT NULL
+    );
