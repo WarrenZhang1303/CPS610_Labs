@@ -13,6 +13,7 @@ USING
 '(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=oracle12c.scs.ryerson.ca)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=orcl12c)))';
 
 SELECT * FROM p7zhang.DB2_TEST@db2;
+SELECT * FROM p7zhang.EMPLOYEE@db2;
 INSERT INTO p7test.tests@db2 (test_id, test_name) VALUES
 (1,'Hello! Can you see me!');
 //GRANT CONNECT, RESOURCE TO p7test;
@@ -29,3 +30,4 @@ INSERT INTO p7zhang.DB2_test@db2 (test_id, test_name) VALUES
  SELECT *
 FROM db2_test@db2
 WHERE owner = 'p7zhang';
+grant select on DB2_TEST TO k1xu;
