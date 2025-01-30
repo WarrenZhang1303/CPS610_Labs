@@ -1,0 +1,1 @@
+grant select on DB2_TEST TO k1xu;

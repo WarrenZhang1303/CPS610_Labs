@@ -1,0 +1,12 @@
+
+MERGE INTO p7zhang.DB2_TEST@DB2 d2
+USING p7zhang.DB2_TEST d1 ON (d2.test_id = d1.test_id)
+WHEN MATCHED THEN 
+    UPDATE SET d2.test_name= d1.test_name
+WHEN NOT MATCHED THEN
+    INSERT(d2.test_id,d2.test_name)
+    VALUES(d1.test_id,d1.test_name);
+    
+INSERT INTO DB2_TEST(test_id,test_name) VALUES(2,"Merge Test");
+INSERT INTO DB2_TEST(test_id,test_name) VALUES(3,"Merge Test2");
+ROLLBACK;
