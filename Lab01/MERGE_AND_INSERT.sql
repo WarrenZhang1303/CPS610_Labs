@@ -1,0 +1,18 @@
+SELECT * FROM p7zhang.DB2_TEST;
+SELECT * FROM DB2_TEST@DB2;
+COMMIT;
+INSERT INTO DB2_TEST (test_id, test_name) VALUES
+(2,'Hello! Can you see me! Message from DB1');
+INSERT INTO DB2_TEST(TEST_ID,TEST_NAME) VALUES(9,'Merge Test');
+INSERT INTO DB2_TEST(test_id,test_name) VALUES(1,'Merge Test');
+INSERT INTO TESTS(test_id,test_name) VALUES(3,'Merge Test2');
+
+MERGE INTO DB2_TEST@DB2 d2
+USING DB2_TEST d1 ON (d2.test_id = d1.TEST_ID)
+WHEN MATCHED THEN 
+    UPDATE SET d2.test_name= d1.TEST_NAME
+WHEN NOT MATCHED THEN
+    INSERT(d2.test_id,d2.test_name)
+    VALUES(d1.TEST_ID,d1.TEST_NAME);
+
+ROLLBACK;
